@@ -48,7 +48,7 @@
 | hashtag_id | Positive integer | Primary Key |
 | hashtag_name | Non-empty text | |
 
-** Primary Key:** `hashtag_id`
+**Primary Key:** `hashtag_id`
 
 ---
 
