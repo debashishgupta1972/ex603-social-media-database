@@ -21,3 +21,11 @@ The database should be able to answer questions such as which users created part
 ## Entity Relationship Diagram
 
 ![Social Media ERD](schema/erd.png)
+
+## Schema
+
+The database contains five tables: `users`, `posts`, `likes`, `hashtags`, and `post_hashtags_mapping`.
+
+The design uses foreign keys to maintain relationships, CHECK constraints to prevent invalid values, and a composite primary key in `post_hashtags_mapping` to represent the many-to-many relationship between posts and hashtags.
+
+Deleting a user, post, or hashtag automatically removes dependent records where appropriate using `ON DELETE CASCADE`.
