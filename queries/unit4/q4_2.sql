@@ -17,7 +17,10 @@ GROUP BY post_id;
 -- What are the failure totals by region and for the whole platform?
 
 SELECT
-    client_country,
+    CASE
+        WHEN GROUPING(client_country) = 1 THEN 'Platform Total'
+        ELSE client_country
+    END AS region,
     COUNT(*) AS total_events,
     SUM(CASE
         WHEN reaction_status = 'removed'
