@@ -1,7 +1,7 @@
 # ex603-social-media-database
 
-**Student:** Debashish Gupta
-**Course:** EX603 - Data and Algorithms for Scalable Systems
+**Student:** Debashish Gupta  
+**Course:** EX603 - Data and Algorithms for Scalable Systems  
 **Theme:** Social Media
 
 ## Project Overview
@@ -20,7 +20,7 @@ The database should be able to answer questions such as which users created part
 
 ## Entity Relationship Diagram
 
-![Social Media ERD](schema/erd.png)
+![Social Media ERD](https://raw.githubusercontent.com/debashishgupta1972/ex603-social-media-database/main/schema/erd.png)
 
 ## Schema
 
@@ -29,3 +29,18 @@ The database contains five tables: `users`, `posts`, `likes`, `hashtags`, and `p
 The design uses foreign keys to maintain relationships, CHECK constraints to prevent invalid values, and a composite primary key in `post_hashtags_mapping` to represent the many-to-many relationship between posts and hashtags.
 
 Deleting a user, post, or hashtag automatically removes dependent records where appropriate using `ON DELETE CASCADE`.
+
+## Unit 4 Query Catalogue
+
+### `queries/unit4/q4_1.sql`
+
+- 4.1.1 — What are the overall dwell-time statistics and number of distinct users?
+- 4.1.2 — How many events and what average dwell time does each post have?
+- 4.1.3 — Which posts have at least 10 events?
+- 4.1.4 — How does performance vary by post and region?
+
+### `queries/unit4/q4_2.sql`
+
+- Part A — How many total events and failures did each post have?
+- Part B — What are the failure totals by region and for the whole platform?
+- Part C — What is the failure-rate baseline for high-volume posts?
