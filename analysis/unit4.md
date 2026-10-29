@@ -2,25 +2,25 @@
 
 The creator monetization team would use the per-post breakdown to identify posts that may need review.
 
-The overall results show 200 events with an average dwell time of 18,140.95 ms. However, an overall average can hide differences between individual posts. Among posts with at least 10 events, failure rates ranged from 0% to 18.75%.
+The overall results show 200 events with an average dwell time of 18,140.95 ms. The overall aggregate does not show how activity is distributed across individual posts or which posts differ from the overall pattern.
 
-A post-level and regional breakdown is therefore more useful for identifying where failures are concentrated and which posts may need further investigation.
+For Question 3, I used a minimum of 10 events because very small event counts can make comparisons less meaningful while still keeping enough posts for comparison.
+
+A post-level and regional breakdown helps show where activity differs and which posts may need further investigation.
 
 ## Task 4.2
 
 ### Part A
 
-The conditional aggregation shows the total number of events and the number of spam-removal failures for each post in one query. Post 2 had the highest number of failures with 3.
+The two questions answered together are how many total events each post had and how many of those events were spam-removal failures. Post 2 had the highest number of failures with 3.
 
 ### Part B
 
-The regional totals show 200 events and 12 spam-removal failures across the platform. India had 4 failures, the US and Brazil had 3 each, and the UK and Vietnam had 1 each.
-
-The grand total gives leadership a platform-wide view, while the regional totals show where failures are concentrated.
+A regional director can use the regional totals to compare areas. The platform grand total shows 200 events and 12 spam-removal failures, providing an overall reference for the regional results.
 
 ### Part C
 
-Using only posts with at least 10 events, the failure-rate baseline is 5.67%. The minimum threshold reduces the effect of very small samples when comparing producers.
+Using only posts with at least 10 events, the failure-rate baseline is 5.67%. This provides a baseline for comparing higher-volume producers.
 
 ## Reflection
 
