@@ -24,8 +24,8 @@ Using only posts with at least 10 events, the failure-rate baseline is 5.67%. Th
 
 ## Reflection
 
-Conditional aggregation is useful because it calculates total events and failures in the same query and over the same set of rows. This makes the comparison easier to understand and reduces the chance of using different filters for the numerator and denominator.
+Conditional aggregation calculates total events and failures in the same query over the same set of rows. This makes the comparison easier to understand and reduces the chance of using different filters for the numerator and denominator. It also keeps related measures together, which is useful when comparing posts or regions.
 
-Using separate filtered queries could produce the same result, but it requires more SQL and may scan the same table more than once. It also makes it easier to accidentally apply different conditions to each query.
+Using separate filtered queries could produce the same result, but it would require more SQL and may scan the same table more than once. Separate queries also make it easier to apply slightly different conditions by mistake, which could make the counts inconsistent.
 
-With a small dataset of 200 rows, the performance difference is not important. With a table containing millions of events, however, scanning the data once can reduce unnecessary work and make the query easier to maintain. Conditional aggregation also keeps related measures together in one result, which is useful when comparing producer or regional performance.
+With this dataset of 200 rows, the performance difference is small. With a table containing millions of events, however, scanning the data once can reduce unnecessary work and make the query easier to maintain. Conditional aggregation is therefore useful both for clarity and for efficiency. It gives the team one result set containing the totals needed to compare producer performance and identify areas that need further review.
