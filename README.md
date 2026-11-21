@@ -106,6 +106,8 @@ In DataGrip, connect to `ex603_data`, open a query file, and execute its individ
 
 ## 8. Video presentation
 
-A **3–5-minute screen-share video** demonstrating representative SQL queries, their results, key findings, and the recommendation will be linked here **after recording**.
+**Recorded video presentation:** [EX603 — Social Media SQL Analytics Project](https://youtu.be/ORRFdAsk82o)
 
-**Status:** Video URL not yet added. The final submission requires both this public GitHub repository URL and an accessible video URL.
+The presentation demonstrates the Unit 6 AVG, ranking, and LAG/LEAD window queries in DataGrip, followed by the GitHub closing memo and next-quarter recommendations.
+
+**Submission note:** This recording runs approximately 5 minutes 29 seconds, which exceeds the assignment's stated 3–5-minute duration. Verify that the unlisted YouTube link opens in a logged-out or Incognito browser before submitting both URLs to Blackboard.
