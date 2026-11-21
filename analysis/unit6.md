@@ -64,6 +64,33 @@ The largest gaps found were:
 
 These are **gaps in recorded reactions**, not proof that the posts were disabled or that the database lost data. For example, Post 9 has no recorded reaction between January 5 and April 28, 2023. This could reflect real inactivity, limited visibility, or incomplete tracking. The event table alone cannot identify the cause. The team should compare these periods with post visibility records and event-collection logs before deciding whether to address engagement or data quality.
 
-## Task 6.3 — To complete after running the queries
+## Task 6.3 — Reporting Patterns
 
-## Reflection (150–250 words) — To complete after all Unit 6 queries
+### Part A: Top three events per post
+
+**Question:** Which three reactions have the highest dwell time for each post?
+
+I used `ROW_NUMBER() OVER (PARTITION BY post_id ORDER BY dwell_ms DESC, like_id)` in a CTE and filtered the outer query to ranks 1–3. I also used `FIRST_VALUE(dwell_ms)` to show each post's highest dwell time alongside its top events. The result returned **39 rows**: three events each for **13 posts** with events. Posts 14 and 15 have no events, so they do not appear.
+
+Post 4 had the highest single dwell time, **70,860 ms** (event 43). I used `ROW_NUMBER()` so a post always has exactly three selected events; if two events tie, the smaller `like_id` comes first. This is a consistent tie-break rule, but it does not treat equal dwell times as equal ranks.
+
+**Platform feature:** A post analytics panel could highlight the top **three** engagement events for each post. Three is enough to show more than one standout event while keeping the panel short and readable. Showing only one could overemphasize an outlier; showing ten could overwhelm a small report.
+
+### Part B: Month-over-month activity
+
+**Question:** Did the number of reaction events rise or fall compared with the previous calendar month?
+
+I grouped events by month, used `LAG()` to retrieve the previous month's count, and calculated the percentage change using `NULLIF(previous_month_events, 0)` to avoid dividing by zero. I generated a complete monthly calendar and left-joined the counts so an absent month would appear as **zero** rather than causing `LAG()` to compare nonadjacent months.
+
+The output showed **all 12 months of 2023**, with no missing months. January and February each had **21 events**. March fell to **11** (−47.62% from February), and May increased to **17** (+54.55% from April), the largest month-over-month increase. December had **16 events**, up **14.29%** from November's 14, but below January's 21.
+
+A large change could reflect real user engagement, a promotion, post visibility, or a tracking issue. The platform team should investigate changes in post availability and event logging before assuming a product improvement or decline. Event counts alone cannot establish whether **spam-removal failure rates** are improving.
+
+## Reflection (150–250 words)
+
+A useful reporting question for our social media platform is: how does each reaction’s dwell time compare with the usual dwell time for its post? A window function makes this straightforward. Using `AVG(dwell_ms) OVER (PARTITION BY post_id)`, I can show the post’s average beside every individual reaction. That lets me spot events that are much shorter or longer than normal while still seeing their event IDs and original dwell times.
+
+A `GROUP BY` query can calculate the same averages, but it reduces the result to one row per post. In our dataset, the window query returned 200 events, while `GROUP BY` returned only 13 post averages. To identify unusual reactions with `GROUP BY` alone, I would need another join or subquery to connect the averages back to the original events.
+
+Window functions also help with trends. `LAG()` lets me compare one reaction with the previous reaction for the same post, and a running `SUM()` shows how activity builds over time. These are more informative than one overall average or total. The key benefit is context: the original rows stay visible, so the numbers are easier to check and explain.
+
