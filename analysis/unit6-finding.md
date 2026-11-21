@@ -29,7 +29,7 @@ Separately, the month-over-month event-count query in Task 6.3 found **21 events
 - **Unit 4, Task 4.2:** Defined failures as spam-detected removed reactions; counted 12 in 200 events.
 - **Unit 6, Task 6.2:** Measured event gaps with `LAG()`.
 - **Unit 6, Task 6.3:** Compared monthly event counts using `LAG()` and a complete month calendar.
-- **Quarterly rates above:** Calculated directly from the 200 event rows in BU's provided `social.sql`. The following SQL is provided for confirmation against the restored PostgreSQL database. **The quarterly SQL has not yet been separately run in DataGrip.**
+- **Quarterly rates above:** Calculated directly from the 200 event rows in BU's provided `social.sql`. The following SQL was **run and verified in DataGrip** against the restored PostgreSQL database. Its four quarterly counts and rates matched the memo exactly.
 
 ```sql
 -- Task 6.4: Is the spam-removal failure rate improving by quarter?
